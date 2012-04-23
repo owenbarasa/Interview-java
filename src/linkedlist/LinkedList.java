@@ -1,5 +1,5 @@
 package linkedlist;
-import java.util.*;
+//import java.util.*;
 
 /**
  * Created by wenqizhu 
