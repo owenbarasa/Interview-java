@@ -156,6 +156,22 @@ public class LinkedList {
     
     
     
+    public boolean findCircle(Node head){
+    	Node slow = head;
+    	Node fast = head;
+    	Node temp = null;
+    	while(true){
+    		if(fast == null || fast.getNext()==null) return false;
+    		else if(fast == slow || fast.getNext() == slow) return true;
+    		else{
+    			slow = slow.getNext();
+    			temp = fast;
+    			temp = temp.getNext();
+    			fast.setNext(temp.getNext());
+    		}
+    		
+    	}
+    }
     
     public int size() {
 	return this.size;

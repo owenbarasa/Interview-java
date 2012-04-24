@@ -58,11 +58,16 @@ public class Stack {
 	Stack test = new Stack();
 	test.push(1);
 	test.push(2);
+	
 	test.push('a');
 	test.push("data");
+	System.out.println(test.size());
+	System.out.println(test.peek());
 	test.printer(test.top);
 	test.pop();
+	System.out.println(test.peek());
 	test.printer(test.top);
+	
 	test.pop();
 	test.printer(test.top);
 	test.pop();
