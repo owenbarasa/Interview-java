@@ -16,6 +16,10 @@ public class LinkedList {
 	this.size = 0;
     }
     
+    public Node getHead(){
+    	return this.head;
+    }
+    
     //Insert in front of linklist
     public Node insertInFront(Node head, Object data) {
 	Node newNode = new Node(data);
@@ -24,6 +28,7 @@ public class LinkedList {
 	this.size++;
 	return head;
     }
+    
     
     //Add new node to the end of linkedlist
     public void add(Object data) {
