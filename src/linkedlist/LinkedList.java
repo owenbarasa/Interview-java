@@ -20,6 +20,10 @@ public class LinkedList {
     	return this.head;
     }
     
+    public void setHead(Node head){
+    	this.head = head;
+    }
+    
     //Insert in front of linklist
     public Node insertInFront(Node head, Object data) {
 	Node newNode = new Node(data);
@@ -110,6 +114,15 @@ public class LinkedList {
 	
     }
     
+   
+    public boolean deleteNode(Node n){//except last node
+    	if(n==null||n.getNext()==null) return false;
+    	Node next = n.getNext();
+    	n.setVal(next.getVal());
+    	n.setNext(next.getNext());
+    	return true; 	
+    }
+    
     public Node deleteNthFromEnd(Node head, int n) {
 	if(n == this.size) {
 	    head = head.getNext();
@@ -130,9 +143,12 @@ public class LinkedList {
 	temp = previous;
 	temp = temp.getNext();
 	previous.setNext(temp.getNext());
+	this.size--;
 	return head;
 	    
     }
+    
+   
     
     public Node deleteList(Node head) {
 	head = null;
@@ -205,13 +221,14 @@ public static void main(String args[]) {
 			
 	test.printer(test.head);
 	//test.head= test.deleteList(test.head);
-	test.head= test.reverse(test.head);
-	test.printer(test.head);
+	//test.head= test.reverse(test.head);
+	//test.printer(test.head);
 	
-
-	test.head = test.deleteNthFromEnd(test.head, 5);
-	test.printer(test.head);
 	
+	test.printer(test.head);
+//	test.head = test.deleteNthFromEnd(test.head, 5);
+//	test.printer(test.head);
+//	
 
 	
 	//System.out.println(test.get(3));
