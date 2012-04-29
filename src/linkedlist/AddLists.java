@@ -51,9 +51,6 @@ public class AddLists {
 		AddLists result = new AddLists();
 		test.setHead(result.addLists(test1.getHead(), test2.getHead(), 0));
 		test.printer(test.getHead());
-		
-		
-
 
 	}
 
