@@ -169,8 +169,8 @@ public class BST {
 			else{
 				node = (node.getLeft()!=null) ? node.getLeft() :node.getRight();
 			}
-			return node;
 		}
+		return node;
 	}
 	
 	public int minValue(){
