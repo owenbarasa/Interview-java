@@ -173,6 +173,18 @@ public class BST {
 		}
 	}
 	
+	public int minValue(){
+		return minValue(root);
+	}
+	
+	private int minValue(Node node){
+		Node current = node;
+		while(current.getLeft()!= null){
+			current = current.getLeft();
+		}
+		return current.getData();
+	}
+	
 	private Node removeMin(Node node){//remove the left 
 		if(node == null)
 			return null;
@@ -185,5 +197,53 @@ public class BST {
 		}
 	}
 	
-
+	public int maxDepth(){
+		return maxDepth(root);
+	}
+	
+	private int maxDepth(Node node){
+		int lDepth,rDepth;
+		if (node == null) return 0;
+		
+		lDepth = maxDepth(node.getLeft());
+		rDepth = maxDepth(node.getRight());
+		
+		return(Math.max(lDepth, rDepth)+1);
+	}
+	
+	public void preorderTraversal(){
+		preorderTraversal(root);
+	}
+	
+	private void preorderTraversal(Node node){
+		if (node == null) return;
+		System.out.print(node.getData() + " ");
+		preorderTraversal(node.getLeft());
+		preorderTraversal(node.getRight());
+	}
+	
+	public void inorderTraversal(){
+		inorderTraversal(root);
+	}
+	
+	private void inorderTraversal(Node node){
+		if(node == null) return;
+		inorderTraversal(node.getLeft());
+		System.out.print(node.getData() + " ");
+		inorderTraversal(node.getRight());
+	}
+	
+	public void postorderTraversal(){
+		postorderTraversal(root);
+	}
+	
+	private void postorderTraversal(Node node){
+		if(node ==null) return;
+		postorderTraversal(node.getLeft());
+		postorderTraversal(node.getRight());
+		System.out.print(node.getData() + " ");
+	}
+	
+	
+	
 }
