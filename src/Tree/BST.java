@@ -78,7 +78,7 @@ public class BST {
 	}
 	
     private Node find(Node node, int data){
-    	while(node.getData()!=data && node!= null){
+    	while(node!= null && node.getData()!=data){
     		if (node.compareTo(data)>0){
     			node = node.getLeft();
     		}else{
@@ -336,17 +336,118 @@ public class BST {
 		}
 	}
 	
+	public static boolean isBST(Node node){
+		if(node == null) 
+			return false;
+		else if(node.getLeft()==null && node.getRight()==null) 
+			return true;
+		else if(node.getLeft()!=null && node.getRight()==null){
+			if(node.getLeft().compareTo(node.getData())>0) 
+				return false;
+			else
+				return isBST(node.getLeft());
+		}
+		else if(node.getLeft()==null && node.getRight()!=null){
+			if(node.getRight().compareTo(node.getData())<0)
+				return false;
+			else
+				return isBST(node.getRight());
+		}
+		else{
+			if (node.getLeft().compareTo(node.getData())>0 || node.getRight().compareTo(node.getData())<0)
+			  return false;
+			else 
+			  return isBST(node.getLeft()) && isBST(node.getRight());
+		}
+	}
+	
+	public boolean hasPathSum(int sum){
+		return hasPathSum(root,sum);
+	}
+	
+	private boolean hasPathSum(Node node,int sum){
+		if (node == null) return (sum == 0);
+		else{
+			int subSum = sum - node.getData();
+			return hasPathSum(node.getLeft(),subSum) || hasPathSum(node.getRight(),subSum);
+		}
+	
+	}
+	
+	public void printPaths(){//prints out all of BST's root-to-leaf paths, one per line.
+		int path[] = new int[1000];
+		printPaths(root,path,0);			
+	}
+	private void printPaths(Node node, int[] path, int pathLen){//given a node,and an array containing the path from the root node up to but
+																//not including this node,prints out all the root-leaf paths.
+		if (node == null) return;
+		path[pathLen]= node.getData();//append this node to the path array
+		pathLen++;
+		if(node.getLeft()==null && node.getLeft()==null){
+			printArray(path,pathLen);
+		}else{
+			printPaths(node.getLeft(),path, pathLen);
+			printPaths(node.getRight(),path, pathLen);
+		}
+	}
+	
+	private void printArray(int[] ints,int len){//utility that prints ints from an array on one line.
+		for(int i = 0; i < len; i++){
+			System.out.print(ints[i] +" ");
+		}
+		System.out.println();
+	}
+	
+	public void mirror(){//change the tree into its mirror image
+		mirror(root);
+	}
+	
+	private void mirror(Node node){
+		if (node!=null){
+			mirror(node.getLeft());
+			mirror(node.getRight());
+			
+			Node temp = node.getLeft();
+			node.setLeft(node.getRight());
+			node.setRight(temp);
+		}
+		
+	}
+	
+	public void doubleTree(){//change the tree by inserting a duplicate node on each nodes's leftchild.
+		doubleTree(root);
+	}
+	
+	private void doubleTree(Node node){
+		Node oldLeft;
+		if (node == null) return;
+		doubleTree(node.getLeft());
+		doubleTree(node.getRight());
+		
+		oldLeft = node.getLeft();
+		node.setLeft(new Node(node.getData()));
+		node.getLeft().setLeft(oldLeft);
+	}
+	
+	public boolean sameTree(BST other){//compares the receiver to another tree to see if they are structurally identical
+		return (sameTree(root,other.getRoot()));
+	}
+	
+	private boolean sameTree(Node a, Node b){
+		if(a == null && b == null) return true;
+		else if(a != null && b != null){
+			return(a.getData()==b.getData() && sameTree(a.getLeft(),b.getLeft())&& sameTree(a.getRight(),b.getRight()));
+		}
+		else return false;
+	}
+	
+	//public static int countTree(){
+		
+		
+	//}
 	public static void main(String[] args){
 		BST BST = new BST();
 
-		//int inputArray[] = new int[10];
-		// inputArray[0] = 26;
-		// for(int i = 1; i < 10; i++){
-		// inputArray[i] = i*i;
-		// }
-		// for(int i = 0; i < 10; i++){
-		// RBT.insert(inputArray[i]);
-		// }
 		BST.insert(8);
 		BST.insert(4);
 		BST.insert(2);
@@ -363,32 +464,38 @@ public class BST {
 		BST.insert(13);
 		BST.insert(15);
 		
-		BST.preorderTraversal();
-		System.out.println(" ");
-		
-		BST.delete(3);
-		BST.deleteNorecursion(10);
-		
-		System.out.println("PREORDER WALK");
-		BST.preorderTraversal();
-		System.out.println(" ");
-		BST.preorderTraversalIterative(BST.getRoot());
-		System.out.println(" ");
-		
-		System.out.println("INORDER WALK");
-		BST.inorderTraversal();
-		System.out.println(" ");
-		BST.inorderTraversalIterative(BST.getRoot());
-		System.out.println(" ");
-		
-		System.out.println("POST ORDER WALK");
-		BST.postorderTraversal();
-		System.out.println(" ");
-		BST.postorderTraversalIterative(BST.getRoot());
-		System.out.println(" ");
-
-
-		System.out.println("Depth is: " + BST.maxDepth());
-		System.out.println(BST.search(19));
+		//BST.doubleTree();
+		//BST.mirror();
+		//System.out.print(BST.hasPathSum(16));
+		BST.printPaths();
+        BST.preorderTraversal();
+        System.out.print(isBST(BST.getRoot()));
+        
+//		System.out.println(" ");
+//		
+//		BST.delete(3);
+//		BST.deleteNorecursion(10);
+//		
+//		System.out.println("PREORDER WALK");
+//		BST.preorderTraversal();
+//		System.out.println(" ");
+//		BST.preorderTraversalIterative(BST.getRoot());
+//		System.out.println(" ");
+//		
+//		System.out.println("INORDER WALK");
+//		BST.inorderTraversal();
+//		System.out.println(" ");
+//		BST.inorderTraversalIterative(BST.getRoot());
+//		System.out.println(" ");
+//		
+//		System.out.println("POST ORDER WALK");
+//		BST.postorderTraversal();
+//		System.out.println(" ");
+//		BST.postorderTraversalIterative(BST.getRoot());
+//		System.out.println(" ");
+//
+//		System.out.println(isBST(BST.getRoot()));
+//		System.out.println("Depth is: " + BST.maxDepth());
+//		System.out.println(BST.search(18));
 	}
 }
