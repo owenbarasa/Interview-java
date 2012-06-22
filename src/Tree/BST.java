@@ -10,6 +10,9 @@ import java.util.*;
  * 3:32:29 PM May 28, 2012
  * @Buffalo
  * Cracking the Coding Interview 
+ * create,isEmpty,getSize,insert,search,deleteNoRecursion,delete,minValue,removeMin,maxDepth,
+ * preorder/inorder/posrorder recursion/iterate traversal
+ * isBST,hasPathSum,printPath,mirror,sameTree,doubleTree,countTree.
  */
 public class BST {
 	private Node root;
@@ -22,7 +25,7 @@ public class BST {
 	public Node getRoot(){
 		return root;
 	}
-	public Node create(int x){
+	public static Node create(int x){
 		Node node = new Node(x);
 		return node;
 	}
@@ -183,6 +186,7 @@ public class BST {
 				node = (node.getLeft()!=null) ? node.getLeft() :node.getRight();
 			}
 		}
+		size--;
 		return node;
 	}
 	
@@ -214,7 +218,7 @@ public class BST {
 		return maxDepth(root);
 	}
 	
-	private int maxDepth(Node node){
+	public static int maxDepth(Node node){
 		int lDepth,rDepth;
 		if (node == null) return 0;
 		
@@ -441,10 +445,23 @@ public class BST {
 		else return false;
 	}
 	
-	//public static int countTree(){
+	public static int countTree(int numKeys){//For the key values numkeys, how many structurally unique binary search trees are possible
+								  //that store those keys?
+		if(numKeys <= 1){
+			return 1;
+		}
+		else{//iterate through all the values that could be root.
+			int sum = 0;
+			int left, right, root;
+			for(root=1;root<=numKeys;root++){
+				left = countTree(root-1);
+				right = countTree(numKeys-root);
+				sum += left*right;//number of possible trees with this root ==left*right'
+				}
+			return sum;
+		}
 		
-		
-	//}
+	}
 	public static void main(String[] args){
 		BST BST = new BST();
 
@@ -469,9 +486,10 @@ public class BST {
 		//System.out.print(BST.hasPathSum(16));
 		BST.printPaths();
         BST.preorderTraversal();
-        System.out.print(isBST(BST.getRoot()));
+        System.out.println(isBST(BST.getRoot()));
         
-//		System.out.println(" ");
+        System.out.println();
+        System.out.print(countTree(1));
 //		
 //		BST.delete(3);
 //		BST.deleteNorecursion(10);
