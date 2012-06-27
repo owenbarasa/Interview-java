@@ -10,21 +10,24 @@ package Tree;
  */
 
 public class Node{
-
+	private Node parent;  // create parent just for convenience in some questions
 	private Node left;
 	private Node right;
 	private int data;
+	
 		
 
 	public Node(){
 		left = null;
 		right = null;
+		parent = null;
 		data = 0;
 	}
 	
 	public Node(int newData){
 		left = null;
 		right = null;
+		parent = null;
 		data = newData;
 	}
 	
@@ -60,4 +63,13 @@ public class Node{
 	public void setData(int data) {
 		this.data = data;
 	}
+	
+	public Node getParent() {
+		return parent;
+	}
+
+	public void setParent(Node parent) {
+		this.parent = parent;
+	}
+
 }
