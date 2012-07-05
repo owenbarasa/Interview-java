@@ -1,7 +1,7 @@
 /**
  * 
  */
-package linkedlist;
+package LinkedList;
 
 /**
  * Created by Wenqi Zhu

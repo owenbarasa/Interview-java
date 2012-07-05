@@ -1,12 +1,13 @@
 /**
  * 
  */
-package linkedlist;
+package LinkedList;
 import java.util.*;
 /**
  * Created by Wenqi Zhu
  * 5:38:02 PM Apr 24, 2012
  * @Buffalo
+ * programming interviews exposed
  */
 public class DeleteDuplicate {
 
