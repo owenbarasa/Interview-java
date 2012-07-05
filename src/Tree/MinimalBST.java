@@ -37,11 +37,7 @@ public class MinimalBST {
 		System.out.println(BST.maxDepth(MHT.createMinimalBST(inputArray)));
 
 		//BST.inorderTraversalIterative(MHT.createMinimalBST(inputArray));
-		
-		
-		
-		
-				
+					
 
 	}
 
