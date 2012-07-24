@@ -45,12 +45,44 @@ public class ReverseWords {
 		}
 		
 	}
+	
+	public void reverseWordsGeneral(char[] str){
+		int tokenRead = str.length -1 ;
+		int wordRead,wordEnd;
+		int writePos = 0;
+		
+		char[] buffer = new char[str.length];
+		
+		while(tokenRead>=0){
+			if(str[tokenRead]==' '){ //non-word characters
+				buffer[writePos++] = str[tokenRead--];
+			}
+			else{ //word charactors
+				wordEnd = tokenRead;
+				while(tokenRead>=0 && str[tokenRead] !=' '){
+					tokenRead--;
+				}
+				
+				wordRead = tokenRead + 1;
+				
+				while(wordRead<=wordEnd){
+					buffer[writePos++] = str[wordRead++];
+				}
+			}
+		}
+		System.arraycopy(buffer, 0, str, 0, str.length);
+	}
+	
 	public static void main(String[] args) {
 		String s = "Hello World";
 		char[] str = s.toCharArray();
 		ReverseWords result = new ReverseWords();
+		result.reverseWordsGeneral(str);
+		System.out.println(str);
+		
 		result.reverseWords(str);
-		System.out.print(str);
+		System.out.println(str);
+		
 	}
 
 }
