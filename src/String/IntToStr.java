@@ -1,13 +1,13 @@
 /**
  * 
  */
-package Array;
+package String;
 
 /**
  * Created by Wenqi Zhu
  * 4:46:58 PM Jul 24, 2012
  * @SanFrancisco
- * Cracking the Coding Interview 
+ * PIE  From Integer to String
  */
 public class IntToStr {
 	public static final int MAX_DIGITS = 10;

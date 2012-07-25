@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedLists;
 /**
  * Created by wenqizhu 
  * Apr 15, 2012 6:32:28 PM

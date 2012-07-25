@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Array;
+package String;
 
 
 /**

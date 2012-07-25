@@ -1,7 +1,7 @@
 /**
  * 
  */
-package LinkedList;
+package LinkedLists;
 import java.util.*;
 /**
  * Created by Wenqi Zhu
