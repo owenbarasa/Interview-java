@@ -7,7 +7,8 @@ package Recursion;
  * Created by Wenqi Zhu
  * 2:06:06 PM Jul 30, 2012
  * @SanFrancisco
- * Cracking the Coding Interview 
+ * PIE 
+ * Implement a routine that prints all possible orderings of the characters in a string.
  */
 public class PermuteString {
 
