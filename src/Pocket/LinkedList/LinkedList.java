@@ -110,6 +110,23 @@ public class LinkedList {
 		this.size--;
 	}
 	
+	Node reverse(Node node){
+		if(node == null) return null;
+		Node curr,next,prev;
+		curr = node;
+		next = null;
+		prev = null;
+		
+		while(curr!=null){
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+		}
+		//node = prev;
+		return prev;
+	}
+	
 	
 	
 	void printer(Node node) {
@@ -134,9 +151,12 @@ public class LinkedList {
 		//System.out.print(list.get(2));
 
 		
-		list.printer(list.head);
+		//list.printer(list.head);
 		//list.delete(2);
-		list.delete(0);
+		//list.delete(0);
+		list.printer(list.head);
+		
+		list.head = list.reverse(list.head);
 		list.printer(list.head);
 		
 		
