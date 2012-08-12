@@ -127,6 +127,31 @@ public class LinkedList {
 		return prev;
 	}
 	
+
+	Node reverseBetween(Node node, int m, int n){
+		// Reverse linked list between [m, n]. m>0, n<list.size-1
+		// 1->2->3->4->5
+		// reverseBetween(head, 1, 3)
+		// 1->4->3->2->5
+		Node start = node;
+		for(int i = 0; i< m-1; i++){
+			start = start.next;
+		}
+		Node curr = start.next;
+		Node prev = null;
+		Node next = curr.next;
+		int count = 0;
+		while(count<=(n-m) && next!=null){
+			curr.next = prev;
+			prev = curr;
+			curr = next;
+			next = next.next;
+			count++;
+		}
+		start.next.next = curr;
+		start.next = prev;
+		return node;
+	}
 	
 	
 	void printer(Node node) {
@@ -140,13 +165,13 @@ public class LinkedList {
 	public static void main(String[] args){
 		LinkedList list = new LinkedList();
 		list.insertf(list.head, 2);
-		list.insertf (list.head, 4);
+		list.insertf (list.head, 1);
 
 		list.add(3);
 
-		list.add(5);
+		list.add(4);
 
-		list.insert(2, 2);
+		list.insert(5, 4);
 		
 		//System.out.print(list.get(2));
 
@@ -154,11 +179,12 @@ public class LinkedList {
 		//list.printer(list.head);
 		//list.delete(2);
 		//list.delete(0);
-		list.printer(list.head);
+		//list.printer(list.head);
 		
-		list.head = list.reverse(list.head);
+		//list.head = list.reverse(list.head);
 		list.printer(list.head);
-		
+		list.head = list.reverseBetween(list.head, 1, 3);
+		list.printer(list.head);
 		
 	}
 }
