@@ -112,6 +112,7 @@ public class LinkedList {
 	
 	Node reverse(Node node){
 		if(node == null) return null;
+		
 		Node curr,next,prev;
 		curr = node;
 		next = null;
@@ -134,22 +135,30 @@ public class LinkedList {
 		// reverseBetween(head, 1, 3)
 		// 1->4->3->2->5
 		Node start = node;
-		for(int i = 0; i< m-1; i++){
+		Node before = null;
+		
+		for(int i = 0; i< m; i++){
+			before = start;
 			start = start.next;
 		}
-		Node curr = start.next;
+		Node curr = start;
 		Node prev = null;
-		Node next = curr.next;
+		Node next = null;
 		int count = 0;
-		while(count<=(n-m) && next!=null){
+		while(count<=(n-m)){
+			next = curr.next;
 			curr.next = prev;
 			prev = curr;
 			curr = next;
-			next = next.next;
 			count++;
 		}
-		start.next.next = curr;
-		start.next = prev;
+		
+		if(m==0){
+			start.next = curr;
+			return prev;
+		}
+		before.next.next = curr;
+		before.next = prev;
 		return node;
 	}
 	
@@ -183,7 +192,7 @@ public class LinkedList {
 		
 		//list.head = list.reverse(list.head);
 		list.printer(list.head);
-		list.head = list.reverseBetween(list.head, 1, 3);
+		list.head = list.reverseBetween(list.head, 1, 4);
 		list.printer(list.head);
 		
 	}
