@@ -14,7 +14,7 @@ public class FindCommon {
 
 	public static String returnCommon(String s1,String s2){
 
-		boolean[] flag = new boolean['z' - 'A'];
+		boolean[] flag = new boolean['z' - 'A'+1];
 		StringBuilder result = new StringBuilder();
 		for(int i = 0; i< s1.length();i++){
 			flag[s1.charAt(i) - 'A'] = true;
@@ -34,7 +34,7 @@ public class FindCommon {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.print(returnCommon("aaCCee","aabbCCff"));
+		System.out.print(returnCommon("aaCCeez","aabbCCffz"));
 	}
 
 }
