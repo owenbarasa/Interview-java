@@ -39,7 +39,7 @@ public class WindowOfZeros {
 		}
 		win = end - start;
 		start++; end++;
-		while(end < len) {
+		while(end < len) {//move to next start 0 and next end 0
 			while(start <= end && input[start] != 0) {
 				start++;
 			}
