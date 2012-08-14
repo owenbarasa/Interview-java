@@ -26,6 +26,39 @@ public class FindSum {
 		return result;
 	}
 	
+	public ArrayList<ArrayList<Integer>> twoSumS(int[] numbers,int target){
+		Arrays.sort(numbers);
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		for(int i = 0; i<numbers.length-1;i++){
+			for(int j= i+1; j<numbers.length;j++){
+				if(numbers[i]+numbers[j] == target){
+					ArrayList<Integer> pair = new ArrayList<Integer>();
+					pair.add(numbers[i]);
+					pair.add(numbers[j]);
+					result.add(pair);
+				}
+			}
+		}
+		return result;
+		
+	}
+	public ArrayList<ArrayList<Integer>> twoSumH(int[] numbers, int target){ // duplicates??
+		Hashtable<Integer,Integer> hash = new Hashtable<Integer,Integer>();
+		for(int i = 0;i<numbers.length;i++){
+			hash.put(target-numbers[i], numbers[i]);
+		}
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		for(int i = 0;i<numbers.length;i++){
+			if(hash.containsKey(numbers[i])){
+			    ArrayList<Integer> pair = new ArrayList<Integer>();
+			    pair.add(numbers[i]);
+			    pair.add(hash.get(numbers[i]));
+			    result.add(pair);
+			}
+		}
+		return result;
+	}
+	
 	public ArrayList<ArrayList<Integer>> threeSum(int[] num,int target){
 		
 		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -106,36 +139,11 @@ public class FindSum {
 		//list = result.threeSum(num, 7);
 		//System.out.print(list);
 		
-		list = result.fourSum(num, 9);
+		//list = result.fourSum(num, 9);
+		//System.out.print(list);
+		list = result.twoSumS(num, 7);
 		System.out.print(list);
-		
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
