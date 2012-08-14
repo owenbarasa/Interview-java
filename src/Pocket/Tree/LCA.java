@@ -47,17 +47,26 @@ public class LCA {
 		return covers(node.left,p) || covers(node.right,p);
 	}
 	
-	static int lca(Node node,int a, int b){
-		if(node == null) return -999;
-		if(node.val==a || node.val ==b) return node.val;
+	static Node lca(Node node,int a, int b){
+		if(node == null) return null;
+		if(node.val==a || node.val ==b) return node;
 		
-		int left = lca(node.left,a,b);
-		int right = lca(node.right,a,b);
-		if(left == -999 && right == -999){
-			return node.val;
-		}
-		
-		return (left == -999)? right : left;
+		Node left = lca(node.left,a,b);
+		Node right = lca(node.right,a,b);
+		if(left!=null && right!=null){
+			return node;
+		}		
+		return (left!=null)? left : right;
 			
+	}
+	static int lcaint(Node node,int a, int b){
+		if(node == null) return -9999;
+		if(node.val == a || node.val == b) return node.val;
+		
+		int left = lcaint(node.left,a,b);
+		int right = lcaint(node.right,a,b);
+		if(left!=-9999 & right != -9999)  return node.val;//a and b and in both sides.
+		return(left!=-9999? left : right);
+		
 	}
 }
