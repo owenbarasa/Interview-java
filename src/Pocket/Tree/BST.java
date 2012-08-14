@@ -43,6 +43,49 @@ public class BST {
 		root = insert(root,number);	
 	}
 	
+	public Node delete(Node node, int data){
+		if(node == null){
+			return null;
+		}
+		
+		if(node.val>data){
+			node.left = delete(node.left,data);
+		}
+		else if(node.val<data){
+			node.right = delete(node.right,data);
+		}
+		else{
+			if(node.left!=null && node.right!= null){
+				node.val = minValue(node.right);
+				node.right = removeMin(node.right);
+			}
+			else{
+				node = (node.left != null)? node.left : node.right;
+			}
+		}
+		return node;
+	}
+	
+	public int minValue(Node node){
+		Node current = node;
+		while(current.left!=null){
+			current = current.left;
+		}
+		return current.val;
+	}
+	
+	public Node removeMin(Node node){
+		 if(node == null){
+			 return null;
+		 }
+		 else if(node.left!=null){
+			 node.left =removeMin(node.left);
+			 return node;
+		 }else{
+			 return node.right;
+		 }
+	}
+	
 	void preorderPrint(Node node){
 		if (node == null) return;
 		System.out.print(node.val + " ");
@@ -162,9 +205,12 @@ public class BST {
 		//bst.postorderPrint(bst.root);
 		//System.out.println();
 		
-		bst.postorderPrintNoR(bst.root);
-		bst.inorderPrintNoR(bst.root);
+		bst.delete(bst.root, 2);
 		bst.preorderPrintNoR(bst.root);
+		bst.postorderPrintNoR(bst.root);
+		
+		bst.inorderPrintNoR(bst.root);
+
 	}
 
 }
