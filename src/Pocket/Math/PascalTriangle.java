@@ -34,41 +34,64 @@ public class PascalTriangle {
 		
 		
 	}
+	
+	public static int printPascalR(int row,int col){
+		if(col<0 || col>row){
+			return 0;
+		}
+		else if(row == 0 && col == 0){
+			return 1;
+		}
+		else{
+			return printPascalR(row-1,col-1)+printPascalR(row-1,col);
+		}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 //		int[][] triangle = printPascal(6);
+		
 //		for(int i = 0;i<6;i++){
 //			for(int j=0;j<=i;j++){
 //				System.out.print(triangle[i][j] + " ");
 //			}
 //			System.out.println();
 //		}
-
-
-	        int[][] pascal  = new int[ROW +1][];
-	        pascal[1] = new int[1 + 2];
-	        pascal[1][1] = 1;
-	        for (int i = 2; i <= ROW; i++) {
-	            pascal[i] = new int[i + 2];
-	            for (int j = 1; j < pascal[i].length - 1; j++) {
-	                pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j];
-	                String str = Integer.toString(pascal[i][j]);
-	                int len = str.length();
-	                if (len > max)
-	                    max = len;
-	            }
-	        }
-
-	        for (int i = 1; i <= ROW; i++) {                
-	            for (int k = ROW; k > i; k--)
-	                System.out.format("%-" + max + "s", " ");
-	            for (int j = 1; j < pascal[i].length - 1; j++)                      
-	                System.out.format("%-" + (max + max) + "s",  pascal[i][j]);
-	            System.out.println();
-	        }
-	    }
-
+		
+		for(int i = 0; i<6;i++){
+			for(int j = 0; j<=i; j++){
+				System.out.print(printPascalR(i,j)+ " ");
+			}
+			System.out.println();
+		}
 		
 	}
+}
+
+
+//	        int[][] pascal  = new int[ROW +1][];
+//	        pascal[1] = new int[1 + 2];
+//	        pascal[1][1] = 1;
+//	        for (int i = 2; i <= ROW; i++) {
+//	            pascal[i] = new int[i + 2];
+//	            for (int j = 1; j < pascal[i].length - 1; j++) {
+//	                pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j];
+//	                String str = Integer.toString(pascal[i][j]);
+//	                int len = str.length();
+//	                if (len > max)
+//	                    max = len;
+//	            }
+//	        }
+//
+//	        for (int i = 1; i <= ROW; i++) {                
+//	            for (int k = ROW; k > i; k--)
+//	                System.out.format("%-" + max + "s", " ");
+//	            for (int j = 1; j < pascal[i].length - 1; j++)                      
+//	                System.out.format("%-" + (max + max) + "s",  pascal[i][j]);
+//	            System.out.println();
+//	        }
+//	    }
+
+		
+
 
 
