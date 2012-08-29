@@ -26,7 +26,7 @@ public class CombinationSum {
 	public static void solve(int[] candidates, int target, ArrayList<Integer> indices, int pos, int sum, ArrayList<ArrayList<Integer>> results){
 		if(sum == target){//add every candidate which index is in indices to result.
 			ArrayList<Integer> result = new ArrayList<Integer>();
-			for(int i =1 ; i<=pos; i++){
+			for(int i =1 ; i<indices.size(); i++){
 			result.add(candidates[indices.get(i)]);
 		}
 			results.add(result);
@@ -37,7 +37,7 @@ public class CombinationSum {
 			for(int i = indices.get(pos);i<candidates.length;i++){
 					indices.add(i);			
 				solve(candidates,target,indices,pos+1,sum+candidates[i],results);
-				indices.remove(pos+1);
+				indices.remove(indices.size()-1);
 			}
 		}
 	}
