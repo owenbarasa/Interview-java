@@ -8,6 +8,9 @@ import java.util.*;
  * 4:51:08 PM Sep 3, 2012
  * @SanFrancisco
  * LeetCode Problems
+ * Given a digit string, return all possible letter combinations that the number could represent.
+	Input:Digit string "23"
+	Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
  */
 public class LetterCombinationsPhoneNumber {
 
