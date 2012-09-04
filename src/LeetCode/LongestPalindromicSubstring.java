@@ -8,6 +8,7 @@ package LeetCode;
  * 8:54:03 PM Sep 3, 2012
  * @SanFrancisco
  * LeetCode Problems
+ * Given a string S, find the longest palindromic substring in S. You may assume that the maximum length of S is 1000, and there exists one unique longest palindromic substring.
  */
 public class LongestPalindromicSubstring {
 
