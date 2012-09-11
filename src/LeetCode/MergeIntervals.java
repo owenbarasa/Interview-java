@@ -20,9 +20,13 @@ public class MergeIntervals {
 	public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        ArrayList<Interval> result = new ArrayList<Interval>();
         
+		ArrayList<Interval> result = new ArrayList<Interval>();
+		if(intervals.size()<1)
+        	return result;
+		
         Collections.sort(intervals,new MyComparator());
+        
         Interval current = intervals.get(0);
         for(int i = 1;i<intervals.size(); i++){
         	Interval tmp = intervals.get(i);
@@ -39,10 +43,10 @@ public class MergeIntervals {
 	
 	public static void main(String[] args){
 		ArrayList<Interval> test = new ArrayList<Interval>();
-		test.add(new Interval(1, 3));
-		test.add(new Interval(2, 6));
-		test.add(new Interval(8, 10));
-		test.add(new Interval(15, 18));
+//		test.add(new Interval(1, 3));
+//		test.add(new Interval(2, 6));
+//		test.add(new Interval(8, 10));
+//		test.add(new Interval(15, 18));
 		//test.add(new Interval(2, 9));
 		MergeIntervals te = new MergeIntervals();
 		test = te.merge(test);
