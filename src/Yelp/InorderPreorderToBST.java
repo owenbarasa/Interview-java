@@ -7,7 +7,7 @@ package Yelp;
  * Created by Wenqi Zhu
  * 11:21:09 AM Sep 12, 2012
  * @SanFrancisco
- * LeetCode Problems
+ * 
  */
 import java.util.List;
 

@@ -15,7 +15,7 @@ import java.util.Map.Entry;
  * Created by Wenqi Zhu
  * 7:01:33 PM Sep 9, 2012
  * @SanFrancisco
- * LeetCode Problems
+ *
  */
 public class TopChatter {
 
