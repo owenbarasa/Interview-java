@@ -15,7 +15,7 @@ import java.util.*;
 	[1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
  */
 public class Permutations {
-	public ArrayList<ArrayList<Integer>> permute(int[] num) {
+	public ArrayList<ArrayList<Integer>> permute(int[] num) { // recursion version
         // Start typing your Java solution below
         // DO NOT write main() function
         int len = num.length;
