@@ -61,6 +61,29 @@ public class NextPermutation {
         swap(num,i,j);
         reverse(num,i+1);
     }
+	
+	
+	
+	/*******************a boolean version which can be re-used by other permutation problems, such as Permutations,PermutationsII,etc****************/
+	public boolean getNext(int[] array){
+		for(int i = array.length-2; i>=0;i--){
+			if(array[i]<array[i+1]){
+				for(int j = array.length-1;j>i;j--){
+					if(array[j] >array[i]){
+						swap(array,i,j);
+						reverse(array,i+1);
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+	
+	public void nextPermutation2(int[] num){
+		boolean result = getNext(num);
+		if(!result) Arrays.sort(num);
+	}
 	 
 	 public static void main(String[] args){
 		 int[] array = {1,2,3,4,5};
