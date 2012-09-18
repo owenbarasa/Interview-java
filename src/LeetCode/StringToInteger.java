@@ -24,7 +24,7 @@ public class StringToInteger {
 		 boolean isNeg = false;
 		 
 		 while(i<str.length() && (str.charAt(i)<'0'||str.charAt(i)>'9')){
-			 if(str.charAt(i)=='0' || str.charAt(i) == ' '){
+			 if(str.charAt(i) == ' '){
 				 i++;
 			 }
 			 else if(str.charAt(i)=='-' && i+1<str.length() && str.charAt(i+1)>='0'&&str.charAt(i+1)<='9'){
