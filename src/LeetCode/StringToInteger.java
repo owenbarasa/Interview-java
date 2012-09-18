@@ -45,7 +45,7 @@ public class StringToInteger {
 		 
 		 String s = str.substring(begin, end);
 		 
-		 int num = 0;
+		 long num = 0;
 		 int j = 0;
 	     int len = s.length();
 		 while(j<len){
@@ -54,11 +54,13 @@ public class StringToInteger {
 			 j++;
 		 }
 	    //How to handle the overflow?
+		 if(isNeg == false && num>Integer.MAX_VALUE) return Integer.MAX_VALUE;
+		 if(isNeg == true && (-1)*num<Integer.MIN_VALUE) return Integer.MIN_VALUE;
 		 
 		 if(isNeg){
 			 num = num*(-1);
 		 }
-		 return num;
+		 return (int)num;
 	 }
 	public static void main(String[] args){
 		String s = "abc";
