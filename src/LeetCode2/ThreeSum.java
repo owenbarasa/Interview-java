@@ -1,12 +1,9 @@
-/**
- * 
- */
 package LeetCode2;
 import java.util.ArrayList;
 import java.util.Arrays;
 /**
  * Created by Wenqi Zhu
- * 10:10:32 PM Nov 17, 2012
+ * 9:21:40 PM Feb 28, 2013
  * @Buffalo
  * LeetCode Problems
  * Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
@@ -21,40 +18,43 @@ import java.util.Arrays;
     (-1, -1, 2)
  */
 public class ThreeSum {
-	public ArrayList<ArrayList<Integer>> threeSum(int[] num){
-		Arrays.sort(num);
-		ArrayList<ArrayList<Integer>> triplets = new ArrayList<ArrayList<Integer>>();
-		int i;
-		
-		for(i=0;i<num.length-2;i++){
-			int j = i + 1;
-			int k = num.length-1;
-			while(j<k){
-				if(num[i]+num[j]+num[k]==0){
-					ArrayList<Integer> triplet = new ArrayList<Integer>();
-					triplet.add(num[i]);
-					triplet.add(num[j]);
-					triplet.add(num[k]);
-					triplets.add(triplet);
-					
-					while(j<num.length-1 && num[j]==triplet.get(1))//skip the current j first,then skip the duplicate j.
-						j++;
-					
-					while(k>1 && num[k]==triplet.get(2))
-						k--;
-				}
-				else if(num[i]+num[j]+num[k]<0){
-					j++;
-				}
-				else{
-					k--;
-				}
-			}
-			while(i<num.length-2 && num[i]==num[i+1]){
-				i++;
-			}
-		}
-		return triplets;
-		
-	}
+	public ArrayList<ArrayList<Integer>> threeSum(int[] num) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        Arrays.sort(num);
+        ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+        int i;
+
+        for(i = 0; i<num.length-2;i++){
+            int j = i+1;
+            int k =num.length-1;
+            
+        	while(j<k){
+        		if(num[i]+num[j]+num[k]==0){
+        			ArrayList<Integer> triplet = new ArrayList<Integer>();
+        			triplet.add(num[i]);
+        			triplet.add(num[j]);
+        			triplet.add(num[k]);
+        			result.add(triplet);
+        			while(j<num.length-1 && num[j]==triplet.get(1)){
+        				j++;
+        			}
+        			while(k>j && num[k]==triplet.get(2)){
+        				k--;
+        			}
+        		}
+        		else if(num[i]+num[j]+num[k]<0){
+        			j++;
+        		}
+        		else{
+        			k--;
+        		}
+        		
+        	}
+        	while(i<num.length-2 && num[i] == num[i+1]){
+        		i++;
+        	}
+        }
+        return result;
+    }
 }
